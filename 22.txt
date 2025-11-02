@@ -1,0 +1,1410 @@
+
+
+
+
+
+
+
+
+
+m@m-HP-Z440-Workstation:~/Desktop/3$ git clone https://github.com/LMCache/LMCache.git
+cd LMCache
+Cloning into 'LMCache'...
+remote: Enumerating objects: 10622, done.
+remote: Counting objects: 100% (138/138), done.
+remote: Compressing objects: 100% (120/120), done.
+remote: Total 10622 (delta 53), reused 22 (delta 18), pack-reused 10484 (from 2)
+Receiving objects: 100% (10622/10622), 25.80 MiB | 2.93 MiB/s, done.
+Resolving deltas: 100% (7418/7418), done.
+m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv venv --python 3.12   # أو أي نسخة مدعومة
+source venv/bin/activate
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+bash: venv/bin/activate: No such file or directory
+m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ source .venv/bin/activate
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+Resolved 29 packages in 1.87s
+Prepared 23 packages in 18m 55s
+Installed 29 packages in 207ms
+ + filelock==3.19.1
+ + fsspec==2025.9.0
+ + jinja2==3.1.6
+ + markupsafe==2.1.5
+ + mpmath==1.3.0
+ + networkx==3.5
+ + numpy==2.3.3
+ + nvidia-cublas-cu12==12.8.3.14
+ + nvidia-cuda-cupti-cu12==12.8.57
+ + nvidia-cuda-nvrtc-cu12==12.8.61
+ + nvidia-cuda-runtime-cu12==12.8.57
+ + nvidia-cudnn-cu12==9.7.1.26
+ + nvidia-cufft-cu12==11.3.3.41
+ + nvidia-cufile-cu12==1.13.0.11
+ + nvidia-curand-cu12==10.3.9.55
+ + nvidia-cusolver-cu12==11.7.2.55
+ + nvidia-cusparse-cu12==12.5.7.53
+ + nvidia-cusparselt-cu12==0.6.3
+ + nvidia-nccl-cu12==2.26.2
+ + nvidia-nvjitlink-cu12==12.8.61
+ + nvidia-nvtx-cu12==12.8.55
+ + pillow==11.3.0
+ + setuptools==70.2.0
+ + sympy==1.14.0
+ + torch==2.7.1+cu128
+ + torchaudio==2.7.1+cu128
+ + torchvision==0.22.1+cu128
+ + triton==3.3.1
+ + typing-extensions==4.15.0
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv pip install -r requirements/build.txt
+Resolved 5 packages in 424ms
+Prepared 1 package in 108ms
+Uninstalled 1 package in 8ms
+Installed 5 packages in 38ms
+ + ninja==1.13.0
+ + packaging==25.0
+ - setuptools==70.2.0
+ + setuptools==80.9.0
+ + setuptools-scm==9.2.2
+ + wheel==0.45.1
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv pip install vllm==0.10.0
+Resolved 139 packages in 1.07s
+Prepared 8 packages in 2m 32s
+Uninstalled 2 packages in 42ms
+Installed 110 packages in 82ms
+ + aiohappyeyeballs==2.6.1
+ + aiohttp==3.13.2
+ + aiosignal==1.4.0
+ + annotated-doc==0.0.3
+ + annotated-types==0.7.0
+ + anyio==4.11.0
+ + astor==0.8.1
+ + attrs==25.4.0
+ + blake3==1.0.8
+ + cachetools==6.2.1
+ + cbor2==5.7.1
+ + certifi==2025.10.5
+ + cffi==2.0.0
+ + charset-normalizer==3.4.4
+ + click==8.2.1
+ + cloudpickle==3.1.1
+ + compressed-tensors==0.10.2
+ + cupy-cuda12x==13.6.0
+ + depyf==0.19.0
+ + dill==0.4.0
+ + diskcache==5.6.3
+ + distro==1.9.0
+ + dnspython==2.8.0
+ + einops==0.8.1
+ + email-validator==2.3.0
+ + fastapi==0.120.4
+ + fastapi-cli==0.0.14
+ + fastapi-cloud-cli==0.3.1
+ + fastrlock==0.8.3
+ + frozenlist==1.8.0
+ + gguf==0.17.1
+ + h11==0.16.0
+ + hf-xet==1.2.0
+ + httpcore==1.0.9
+ + httptools==0.7.1
+ + httpx==0.28.1
+ + huggingface-hub==0.36.0
+ + idna==3.11
+ + interegular==0.3.3
+ + jiter==0.11.1
+ + jsonschema==4.25.1
+ + jsonschema-specifications==2025.9.1
+ + lark==1.2.2
+ + llguidance==0.7.30
+ + llvmlite==0.44.0
+ + lm-format-enforcer==0.10.12
+ + markdown-it-py==4.0.0
+ + mdurl==0.1.2
+ + mistral-common==1.8.5
+ + msgpack==1.1.2
+ + msgspec==0.19.0
+ + multidict==6.7.0
+ + numba==0.61.2
+ - numpy==2.3.3
+ + numpy==2.2.6
+ + openai==1.90.0
+ + opencv-python-headless==4.12.0.88
+ + outlines-core==0.2.10
+ + partial-json-parser==0.2.1.1.post6
+ + prometheus-client==0.23.1
+ + prometheus-fastapi-instrumentator==7.1.0
+ + propcache==0.4.1
+ + protobuf==6.33.0
+ + psutil==7.1.2
+ + py-cpuinfo==9.0.0
+ + pybase64==1.4.2
+ + pycountry==24.6.1
+ + pycparser==2.23
+ + pydantic==2.12.3
+ + pydantic-core==2.41.4
+ + pydantic-extra-types==2.10.6
+ + pygments==2.19.2
+ + python-dotenv==1.2.1
+ + python-json-logger==4.0.0
+ + python-multipart==0.0.20
+ + pyyaml==6.0.3
+ + pyzmq==27.1.0
+ + ray==2.51.1
+ + referencing==0.37.0
+ + regex==2025.10.23
+ + requests==2.32.5
+ + rich==14.2.0
+ + rich-toolkit==0.15.1
+ + rignore==0.7.3
+ + rpds-py==0.28.0
+ + safetensors==0.6.2
+ + scipy==1.16.3
+ + sentencepiece==0.2.1
+ + sentry-sdk==2.43.0
+ - setuptools==80.9.0
+ + setuptools==79.0.1
+ + shellingham==1.5.4
+ + six==1.17.0
+ + sniffio==1.3.1
+ + soundfile==0.13.1
+ + soxr==1.0.0
+ + starlette==0.49.3
+ + tiktoken==0.12.0
+ + tokenizers==0.22.1
+ + tqdm==4.67.1
+ + transformers==4.57.1
+ + typer==0.20.0
+ + typing-inspection==0.4.2
+ + urllib3==2.5.0
+ + uvicorn==0.38.0
+ + uvloop==0.22.1
+ + vllm==0.10.0
+ + watchfiles==1.1.1
+ + websockets==15.0.1
+ + xformers==0.0.31
+ + xgrammar==0.1.21
+ + yarl==1.22.0
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv pip install -e . --no-build-isolation
+Resolved 78 packages in 5.66s
+Uninstalled 1 package in 17ms
+Installed 10 packages in 83ms
+      Built lmcache @ file:///home/m/Desktop/3/LMCache
+Prepared 1 package without build isolation in 1m 04s
+Installed 1 package in 1ms
+ + aiofile==3.9.0
+ + aiofiles==25.1.0
+ + awscrt==0.28.3
+ + caio==0.9.24
+ + cufile-python==0.2.0
+ + lmcache==0.3.10.dev12 (from file:///home/m/Desktop/3/LMCache)
+ + nixl==0.7.0
+ - numpy==2.2.6
+ + numpy==2.2.0
+ + nvtx==0.2.13
+ + redis==7.0.1
+ + sortedcontainers==2.4.0
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ python3 -c "import lmcache.c_ops"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ImportError: libc10.so: cannot open shared object file: No such file or directory
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ python3 -c "import lmcache.c_ops"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ImportError: libc10.so: cannot open shared object file: No such file or directory
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ python
+Python 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from vllm import LLM, SamplingParams
+INFO 11-02 01:39:32 [__init__.py:235] Automatically detected platform cuda.
+>>> from vllm.config import KVTransferConfig
+>>> # Configure KV cache transfer to use LMCache
+>>> ktc = KVTransferConfig(
+...     kv_connector="LMCacheConnectorV1",
+...     kv_role="kv_both",
+... )
+>>> 
+>>> # Initialize LLM with LMCache configuration
+>>> # Adjust gpu_memory_utilization based on your GPU memory
+>>> llm = LLM(model="facebook/opt-125m",
+...           kv_transfer_config=ktc,
+...           max_model_len=8000,
+...           gpu_memory_utilization=0.8)
+
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 273, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/engine/llm_engine.py", line 490, in from_engine_args
+    vllm_config = engine_args.create_engine_config(usage_context)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1004, in create_engine_config
+    model_config = self.create_model_config()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 872, in create_model_config
+    return ModelConfig(
+           ^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+  Value error, User-specified max_model_len (8000) is greater than the derived max_model_len (max_position_embeddings=2048 or model_max_length=None in model's config.json). This may lead to incorrect model outputs or CUDA errors. To allow overriding this maximum, set the env var VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 [type=value_error, input_value=ArgsKwargs((), {'model': ...attention_dtype': None}), input_type=ArgsKwargs]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error
+>>> # Create example prompts with shared prefix
+>>> shared_prompt = "Hello, how are you?" * 1000
+>>> prompts = [
+...     shared_prompt + "Hello, my name is",
+... ]
+>>> 
+>>> # Define sampling parameters
+>>> sampling_params = SamplingParams(temperature=0, top_p=0.95, max_tokens=10)
+>>> 
+>>> # Run inference
+>>> outputs = llm.generate(prompts, sampling_params)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'llm' is not defined. Did you mean: 'LLM'?
+>>> for output in outputs:
+...     generated_text = output.outputs[0].text
+...     print(f"Generated text: {generated_text!r}")
+... 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'outputs' is not defined
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # Configure KV cache transfer to use LMCache
+>>> ktc = KVTransferConfig(
+...     kv_connector="LMCacheConnectorV1",
+...     kv_role="kv_both",
+... )
+>>> 
+>>> # Initialize LLM with LMCache configuration
+>>> # Adjust gpu_memory_utilization based on your GPU memory
+>>> llm = LLM(model="facebook/opt-125m",
+...           kv_transfer_config=ktc,
+...           max_model_len=8000,
+...           gpu_memory_utilization=0.8)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 273, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/engine/llm_engine.py", line 490, in from_engine_args
+    vllm_config = engine_args.create_engine_config(usage_context)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1004, in create_engine_config
+    model_config = self.create_model_config()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 872, in create_model_config
+    return ModelConfig(
+           ^^^^^^^^^^^^
+  File "/home/m/Desktop/3/LMCache/.venv/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+  Value error, User-specified max_model_len (8000) is greater than the derived max_model_len (max_position_embeddings=2048 or model_max_length=None in model's config.json). This may lead to incorrect model outputs or CUDA errors. To allow overriding this maximum, set the env var VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 [type=value_error, input_value=ArgsKwargs((), {'model': ...attention_dtype': None}), input_type=ArgsKwargs]
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error
+>>> # Create example prompts with shared prefix
+>>> shared_prompt = "Hello, how are you?" * 1000
+>>> prompts = [
+...     shared_prompt + "Hello, my name is",
+... ]
+>>> 
+>>> # Define sampling parameters
+>>> sampling_params = SamplingParams(temperature=0, top_p=0.95, max_tokens=10)
+>>> 
+>>> # Run inference
+>>> outputs = llm.generate(prompts, sampling_params)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'llm' is not defined. Did you mean: 'LLM'?
+>>> for output in outputs:
+...     generated_text = output.outputs[0].text
+...     print(f"Generated text: {generated_text!r}")
+... 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'outputs' is not defined
+>>> exit()
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ LMCACHE_CHUNK_SIZE=8 \
+vllm serve facebook/opt-125m \
+    --port 8000 --kv-transfer-config \
+    '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+INFO 11-02 01:42:57 [__init__.py:235] Automatically detected platform cuda.
+INFO 11-02 01:43:01 [api_server.py:1755] vLLM API server version 0.10.0
+INFO 11-02 01:43:01 [cli_args.py:261] non-default args: {'model_tag': 'facebook/opt-125m', 'model': 'facebook/opt-125m', 'kv_transfer_config': KVTransferConfig(kv_connector='LMCacheConnectorV1', engine_id='c532e1ac-5770-4fe5-9071-9f1a0f8ec8cf', kv_buffer_device='cuda', kv_buffer_size=1000000000.0, kv_role='kv_both', kv_rank=None, kv_parallel_size=1, kv_ip='127.0.0.1', kv_port=14579, kv_connector_extra_config={}, kv_connector_module_path=None)}
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 11-02 01:43:09 [config.py:1604] Using max model len 2048
+INFO 11-02 01:43:09 [config.py:2434] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 11-02 01:43:15 [__init__.py:235] Automatically detected platform cuda.
+INFO 11-02 01:43:18 [core.py:572] Waiting for init message from front-end.
+INFO 11-02 01:43:18 [core.py:71] Initializing a V1 LLM engine (v0.10.0) with config: model='facebook/opt-125m', speculative_config=None, tokenizer='facebook/opt-125m', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=2048, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=facebook/opt-125m, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"max_capture_size":512,"local_cache_dir":null}
+INFO 11-02 01:43:19 [parallel_state.py:1102] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+INFO 11-02 01:43:20 [factory.py:74] Creating v1 connector with name: LMCacheConnectorV1 and engine_id: c532e1ac-5770-4fe5-9071-9f1a0f8ec8cf
+WARNING 11-02 01:43:20 [base.py:71] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+[2025-11-02 01:43:20,030] LMCache WARNING: No LMCache configuration file is set. Trying to read configurations from the environment variables. (utils.py:61:lmcache.integration.vllm.utils)
+[2025-11-02 01:43:20,030] LMCache WARNING: You can set the configuration file through the environment variable: LMCACHE_CONFIG_FILE (utils.py:65:lmcache.integration.vllm.utils)
+[2025-11-02 01:43:20,030] LMCache INFO: use mla: False, kv shape: (12, 2, 8, 12, 64), num_draft_layers:0 (vllm_v1_adapter.py:489:lmcache.integration.vllm.vllm_v1_adapter)
+[2025-11-02 01:43:20,035] LMCache INFO: Creating LMCacheEngine instance vllm-instance (cache_engine.py:1417:lmcache.v1.cache_engine)
+[2025-11-02 01:43:20,035] LMCache INFO: NUMA mapping for instance vllm-instance: None (cache_engine.py:1420:lmcache.v1.cache_engine)
+[2025-11-02 01:43:20,035] LMCache INFO: sending cache usage stats to http://stats.lmcache.ai:8080/cache-usage (usage_context.py:285:lmcache.usage_context)
+[2025-11-02 01:43:20,037] LMCache INFO: Creating LMCacheEngine with config: {'chunk_size': 8, 'local_cpu': True, 'max_local_cpu_size': 5.0, 'reserve_local_cpu_size': 0.0, 'local_disk': None, 'max_local_disk_size': 0.0, 'remote_url': None, 'remote_serde': 'naive', 'use_layerwise': False, 'save_decode_cache': False, 'pre_caching_hash_algorithm': 'builtin', 'enable_blending': False, 'blend_recompute_ratios': None, 'blend_thresholds': None, 'blend_check_layers': None, 'blend_min_tokens': 256, 'blend_special_str': ' # # ', 'enable_p2p': False, 'p2p_host': None, 'p2p_init_ports': None, 'p2p_lookup_ports': None, 'enable_controller': False, 'lmcache_instance_id': 'lmcache_instance_ca83b1daf6a64bb6ac6a744d556e22d5', 'controller_pull_url': None, 'controller_reply_url': None, 'lmcache_worker_ports': None, 'lmcache_worker_heartbeat_delay_time': 10, 'lmcache_worker_heartbeat_time': None, 'enable_pd': False, 'pd_role': None, 'pd_buffer_size': None, 'pd_buffer_device': None, 'pd_peer_host': None, 'pd_peer_init_port': None, 'pd_peer_alloc_port': None, 'pd_proxy_host': None, 'pd_proxy_port': None, 'transfer_channel': None, 'nixl_backends': None, 'nixl_buffer_size': None, 'nixl_buffer_device': None, 'weka_path': None, 'gds_path': None, 'cufile_buffer_size': None, 'audit_actual_remote_url': None, 'internal_api_server_host': '0.0.0.0', 'extra_config': None, 'save_unfull_chunk': True, 'blocking_timeout_secs': 10, 'external_lookup_client': None, 'py_enable_gc': True, 'cache_policy': 'LRU', 'numa_mode': None, 'enable_async_loading': False, 'internal_api_server_enabled': False, 'internal_api_server_port_start': 6999, 'priority_limit': None, 'internal_api_server_include_index_list': None, 'internal_api_server_socket_path_prefix': None, 'plugin_locations': None, 'external_backends': None, 'lookup_timeout_ms': 3000, 'hit_miss_ratio': None, 'lookup_server_worker_ids': None, 'enable_scheduler_bypass_lookup': False} (cache_engine.py:87:lmcache.v1.cache_engine)
+[2025-11-02 01:43:20,042] LMCache INFO: Initializing LRUCachePolicy (lru.py:20:lmcache.v1.storage_backend.cache_policy.lru)
+[2025-11-02 01:43:20,042] LMCache INFO: NUMA mapping None (local_cpu_backend.py:332:lmcache.v1.storage_backend.local_cpu_backend)
+[2025-11-02 01:43:21,900] LMCache INFO: Initializing usage context. (usage_context.py:357:lmcache.usage_context)
+[2025-11-02 01:43:23,692] LMCache INFO: lmcache lookup server start on /tmp/engine_c532e1ac-5770-4fe5-9071-9f1a0f8ec8cf_service_lookup_lmcache_rpc_port_0 (lmcache_lookup_client.py:268:lmcache.v1.lookup_client.lmcache_lookup_client)
+[2025-11-02 01:43:23,696] LMCache INFO: Internal API server disabled. internal_api_server_enabled=False, port_offset=1, port=7000, socket_path=None, include_index_list=None (api_server.py:50:lmcache.v1.internal_api_server.api_server)
+[2025-11-02 01:43:23,696] LMCache INFO: LMCache initialized for role KVConnectorRole.WORKER with version 0.3.10.dev12-g1b5e5be8d, vllm version 0.10.0, lmcache cache_engine metadata: LMCacheEngineMetadata(model_name='facebook/opt-125m', world_size=1, worker_id=0, fmt='vllm', kv_dtype=torch.float16, kv_shape=(12, 2, 8, 12, 64), use_mla=False, role='worker') (vllm_v1_adapter.py:736:lmcache.integration.vllm.vllm_v1_adapter)
+WARNING 11-02 01:43:23 [topk_topp_sampler.py:59] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 11-02 01:43:23 [gpu_model_runner.py:1843] Starting to load model facebook/opt-125m...
+INFO 11-02 01:43:23 [gpu_model_runner.py:1875] Loading model from scratch...
+INFO 11-02 01:43:23 [cuda.py:290] Using Flash Attention backend on V1 engine.
+INFO 11-02 01:43:24 [weight_utils.py:296] Using model weights format ['*.bin']
+Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.76it/s]
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.75it/s]
+
+INFO 11-02 01:43:24 [default_loader.py:262] Loading weights took 0.27 seconds
+INFO 11-02 01:43:25 [gpu_model_runner.py:1892] Model loading took 0.2393 GiB and 1.023887 seconds
+INFO 11-02 01:43:28 [backends.py:530] Using cache directory: /home/m/.cache/vllm/torch_compile_cache/7ce81c5277/rank_0_0/backbone for vLLM's torch.compile
+INFO 11-02 01:43:28 [backends.py:541] Dynamo bytecode transform time: 2.94 s
+INFO 11-02 01:43:30 [backends.py:194] Cache the graph for dynamic shape for later use
+[rank0]:W1102 01:43:31.123000 18181 torch/_inductor/utils.py:1250] [0/0] Not enough SMs to use max_autotune_gemm mode
+INFO 11-02 01:43:38 [backends.py:215] Compiling a graph for dynamic shape takes 9.56 s
+INFO 11-02 01:43:39 [monitor.py:34] torch.compile takes 12.50 s in total
+INFO 11-02 01:43:40 [gpu_worker.py:255] Available KV cache memory: 13.13 GiB
+INFO 11-02 01:43:41 [kv_cache_utils.py:833] GPU KV cache size: 382,352 tokens
+INFO 11-02 01:43:41 [kv_cache_utils.py:837] Maximum concurrency for 2,048 tokens per request: 186.70x
+Capturing CUDA graph shapes: 100%|██████████████| 67/67 [00:01<00:00, 60.43it/s]
+INFO 11-02 01:43:42 [gpu_model_runner.py:2485] Graph capturing finished in 1 secs, took 0.15 GiB
+INFO 11-02 01:43:42 [core.py:193] init engine (profile, create kv cache, warmup model) took 16.99 seconds
+INFO 11-02 01:43:43 [factory.py:74] Creating v1 connector with name: LMCacheConnectorV1 and engine_id: c532e1ac-5770-4fe5-9071-9f1a0f8ec8cf
+WARNING 11-02 01:43:43 [base.py:71] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+[2025-11-02 01:43:43,133] LMCache INFO: lmcache lookup client connect to rank 0 with socket path /tmp/engine_c532e1ac-5770-4fe5-9071-9f1a0f8ec8cf_service_lookup_lmcache_rpc_port_0 (lmcache_lookup_client.py:85:lmcache.v1.lookup_client.lmcache_lookup_client)
+[2025-11-02 01:43:43,133] LMCache INFO: Internal API server disabled. internal_api_server_enabled=False, port_offset=0, port=6999, socket_path=None, include_index_list=None (api_server.py:50:lmcache.v1.internal_api_server.api_server)
+[2025-11-02 01:43:43,133] LMCache INFO: LMCache initialized for role KVConnectorRole.SCHEDULER with version 0.3.10.dev12-g1b5e5be8d, vllm version 0.10.0, lmcache cache_engine metadata: None (vllm_v1_adapter.py:736:lmcache.integration.vllm.vllm_v1_adapter)
+INFO 11-02 01:43:43 [loggers.py:141] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 23897
+INFO 11-02 01:43:43 [api_server.py:1818] Starting vLLM API server 0 on http://0.0.0.0:8000
+INFO 11-02 01:43:43 [launcher.py:29] Available routes are:
+INFO 11-02 01:43:43 [launcher.py:37] Route: /openapi.json, Methods: GET, HEAD
+INFO 11-02 01:43:43 [launcher.py:37] Route: /docs, Methods: GET, HEAD
+INFO 11-02 01:43:43 [launcher.py:37] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+INFO 11-02 01:43:43 [launcher.py:37] Route: /redoc, Methods: GET, HEAD
+INFO 11-02 01:43:43 [launcher.py:37] Route: /health, Methods: GET
+INFO 11-02 01:43:43 [launcher.py:37] Route: /load, Methods: GET
+INFO 11-02 01:43:43 [launcher.py:37] Route: /ping, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /ping, Methods: GET
+INFO 11-02 01:43:43 [launcher.py:37] Route: /tokenize, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /detokenize, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/models, Methods: GET
+INFO 11-02 01:43:43 [launcher.py:37] Route: /version, Methods: GET
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/responses, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/responses/{response_id}, Methods: GET
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/responses/{response_id}/cancel, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/chat/completions, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/completions, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/embeddings, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /pooling, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /classify, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /score, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/score, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/audio/transcriptions, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/audio/translations, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /rerank, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v1/rerank, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /v2/rerank, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /scale_elastic_ep, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /is_scaling_elastic_ep, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /invocations, Methods: POST
+INFO 11-02 01:43:43 [launcher.py:37] Route: /metrics, Methods: GET
+INFO:     Started server process [18050]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+^CINFO 11-02 01:44:42 [launcher.py:80] Shutting down FastAPI HTTP server.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ LMCACHE_CHUNK_SIZE=8 \
+vllm serve facebook/opt-125m \
+    --port 8000 --kv-transfer-config \
+    '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+INFO 11-02 01:46:40 [__init__.py:235] Automatically detected platform cuda.
+INFO 11-02 01:46:44 [api_server.py:1755] vLLM API server version 0.10.0
+INFO 11-02 01:46:44 [cli_args.py:261] non-default args: {'model_tag': 'facebook/opt-125m', 'model': 'facebook/opt-125m', 'kv_transfer_config': KVTransferConfig(kv_connector='LMCacheConnectorV1', engine_id='7a0c9b47-96d9-4f2e-a229-365c329a707b', kv_buffer_device='cuda', kv_buffer_size=1000000000.0, kv_role='kv_both', kv_rank=None, kv_parallel_size=1, kv_ip='127.0.0.1', kv_port=14579, kv_connector_extra_config={}, kv_connector_module_path=None)}
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 11-02 01:46:51 [config.py:1604] Using max model len 2048
+INFO 11-02 01:46:52 [config.py:2434] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 11-02 01:46:57 [__init__.py:235] Automatically detected platform cuda.
+INFO 11-02 01:47:00 [core.py:572] Waiting for init message from front-end.
+INFO 11-02 01:47:00 [core.py:71] Initializing a V1 LLM engine (v0.10.0) with config: model='facebook/opt-125m', speculative_config=None, tokenizer='facebook/opt-125m', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=2048, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=facebook/opt-125m, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"max_capture_size":512,"local_cache_dir":null}
+INFO 11-02 01:47:01 [parallel_state.py:1102] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+INFO 11-02 01:47:01 [factory.py:74] Creating v1 connector with name: LMCacheConnectorV1 and engine_id: 7a0c9b47-96d9-4f2e-a229-365c329a707b
+WARNING 11-02 01:47:01 [base.py:71] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+[2025-11-02 01:47:01,483] LMCache WARNING: No LMCache configuration file is set. Trying to read configurations from the environment variables. (utils.py:61:lmcache.integration.vllm.utils)
+[2025-11-02 01:47:01,483] LMCache WARNING: You can set the configuration file through the environment variable: LMCACHE_CONFIG_FILE (utils.py:65:lmcache.integration.vllm.utils)
+[2025-11-02 01:47:01,483] LMCache INFO: use mla: False, kv shape: (12, 2, 8, 12, 64), num_draft_layers:0 (vllm_v1_adapter.py:489:lmcache.integration.vllm.vllm_v1_adapter)
+[2025-11-02 01:47:01,488] LMCache INFO: Creating LMCacheEngine instance vllm-instance (cache_engine.py:1417:lmcache.v1.cache_engine)
+[2025-11-02 01:47:01,488] LMCache INFO: NUMA mapping for instance vllm-instance: None (cache_engine.py:1420:lmcache.v1.cache_engine)
+[2025-11-02 01:47:01,489] LMCache INFO: sending cache usage stats to http://stats.lmcache.ai:8080/cache-usage (usage_context.py:285:lmcache.usage_context)
+[2025-11-02 01:47:01,492] LMCache INFO: Creating LMCacheEngine with config: {'chunk_size': 8, 'local_cpu': True, 'max_local_cpu_size': 5.0, 'reserve_local_cpu_size': 0.0, 'local_disk': None, 'max_local_disk_size': 0.0, 'remote_url': None, 'remote_serde': 'naive', 'use_layerwise': False, 'save_decode_cache': False, 'pre_caching_hash_algorithm': 'builtin', 'enable_blending': False, 'blend_recompute_ratios': None, 'blend_thresholds': None, 'blend_check_layers': None, 'blend_min_tokens': 256, 'blend_special_str': ' # # ', 'enable_p2p': False, 'p2p_host': None, 'p2p_init_ports': None, 'p2p_lookup_ports': None, 'enable_controller': False, 'lmcache_instance_id': 'lmcache_instance_6f7460336a474df4b9a1c513c3270685', 'controller_pull_url': None, 'controller_reply_url': None, 'lmcache_worker_ports': None, 'lmcache_worker_heartbeat_delay_time': 10, 'lmcache_worker_heartbeat_time': None, 'enable_pd': False, 'pd_role': None, 'pd_buffer_size': None, 'pd_buffer_device': None, 'pd_peer_host': None, 'pd_peer_init_port': None, 'pd_peer_alloc_port': None, 'pd_proxy_host': None, 'pd_proxy_port': None, 'transfer_channel': None, 'nixl_backends': None, 'nixl_buffer_size': None, 'nixl_buffer_device': None, 'weka_path': None, 'gds_path': None, 'cufile_buffer_size': None, 'audit_actual_remote_url': None, 'internal_api_server_host': '0.0.0.0', 'extra_config': None, 'save_unfull_chunk': True, 'blocking_timeout_secs': 10, 'external_lookup_client': None, 'py_enable_gc': True, 'cache_policy': 'LRU', 'numa_mode': None, 'enable_async_loading': False, 'internal_api_server_enabled': False, 'internal_api_server_port_start': 6999, 'priority_limit': None, 'internal_api_server_include_index_list': None, 'internal_api_server_socket_path_prefix': None, 'plugin_locations': None, 'external_backends': None, 'lookup_timeout_ms': 3000, 'hit_miss_ratio': None, 'lookup_server_worker_ids': None, 'enable_scheduler_bypass_lookup': False} (cache_engine.py:87:lmcache.v1.cache_engine)
+[2025-11-02 01:47:01,493] LMCache INFO: Initializing LRUCachePolicy (lru.py:20:lmcache.v1.storage_backend.cache_policy.lru)
+[2025-11-02 01:47:01,493] LMCache INFO: NUMA mapping None (local_cpu_backend.py:332:lmcache.v1.storage_backend.local_cpu_backend)
+[2025-11-02 01:47:03,313] LMCache INFO: Initializing usage context. (usage_context.py:357:lmcache.usage_context)
+[2025-11-02 01:47:05,104] LMCache INFO: lmcache lookup server start on /tmp/engine_7a0c9b47-96d9-4f2e-a229-365c329a707b_service_lookup_lmcache_rpc_port_0 (lmcache_lookup_client.py:268:lmcache.v1.lookup_client.lmcache_lookup_client)
+[2025-11-02 01:47:05,106] LMCache INFO: Internal API server disabled. internal_api_server_enabled=False, port_offset=1, port=7000, socket_path=None, include_index_list=None (api_server.py:50:lmcache.v1.internal_api_server.api_server)
+[2025-11-02 01:47:05,106] LMCache INFO: LMCache initialized for role KVConnectorRole.WORKER with version 0.3.10.dev12-g1b5e5be8d, vllm version 0.10.0, lmcache cache_engine metadata: LMCacheEngineMetadata(model_name='facebook/opt-125m', world_size=1, worker_id=0, fmt='vllm', kv_dtype=torch.float16, kv_shape=(12, 2, 8, 12, 64), use_mla=False, role='worker') (vllm_v1_adapter.py:736:lmcache.integration.vllm.vllm_v1_adapter)
+WARNING 11-02 01:47:05 [topk_topp_sampler.py:59] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 11-02 01:47:05 [gpu_model_runner.py:1843] Starting to load model facebook/opt-125m...
+INFO 11-02 01:47:05 [gpu_model_runner.py:1875] Loading model from scratch...
+INFO 11-02 01:47:05 [cuda.py:290] Using Flash Attention backend on V1 engine.
+INFO 11-02 01:47:05 [weight_utils.py:296] Using model weights format ['*.bin']
+Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.84it/s]
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.84it/s]
+
+INFO 11-02 01:47:06 [default_loader.py:262] Loading weights took 0.27 seconds
+INFO 11-02 01:47:06 [gpu_model_runner.py:1892] Model loading took 0.2393 GiB and 0.930195 seconds
+INFO 11-02 01:47:09 [backends.py:530] Using cache directory: /home/m/.cache/vllm/torch_compile_cache/7ce81c5277/rank_0_0/backbone for vLLM's torch.compile
+INFO 11-02 01:47:09 [backends.py:541] Dynamo bytecode transform time: 2.80 s
+INFO 11-02 01:47:11 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 1.239 s
+INFO 11-02 01:47:11 [monitor.py:34] torch.compile takes 2.80 s in total
+INFO 11-02 01:47:12 [gpu_worker.py:255] Available KV cache memory: 13.41 GiB
+INFO 11-02 01:47:12 [kv_cache_utils.py:833] GPU KV cache size: 390,496 tokens
+INFO 11-02 01:47:12 [kv_cache_utils.py:837] Maximum concurrency for 2,048 tokens per request: 190.67x
+Capturing CUDA graph shapes: 100%|██████████████████████████████████████████████████████| 67/67 [00:01<00:00, 65.18it/s]
+INFO 11-02 01:47:13 [gpu_model_runner.py:2485] Graph capturing finished in 1 secs, took 0.15 GiB
+INFO 11-02 01:47:13 [core.py:193] init engine (profile, create kv cache, warmup model) took 7.24 seconds
+INFO 11-02 01:47:14 [factory.py:74] Creating v1 connector with name: LMCacheConnectorV1 and engine_id: 7a0c9b47-96d9-4f2e-a229-365c329a707b
+WARNING 11-02 01:47:14 [base.py:71] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+[2025-11-02 01:47:14,677] LMCache INFO: lmcache lookup client connect to rank 0 with socket path /tmp/engine_7a0c9b47-96d9-4f2e-a229-365c329a707b_service_lookup_lmcache_rpc_port_0 (lmcache_lookup_client.py:85:lmcache.v1.lookup_client.lmcache_lookup_client)
+[2025-11-02 01:47:14,677] LMCache INFO: Internal API server disabled. internal_api_server_enabled=False, port_offset=0, port=6999, socket_path=None, include_index_list=None (api_server.py:50:lmcache.v1.internal_api_server.api_server)
+[2025-11-02 01:47:14,678] LMCache INFO: LMCache initialized for role KVConnectorRole.SCHEDULER with version 0.3.10.dev12-g1b5e5be8d, vllm version 0.10.0, lmcache cache_engine metadata: None (vllm_v1_adapter.py:736:lmcache.integration.vllm.vllm_v1_adapter)
+INFO 11-02 01:47:14 [loggers.py:141] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 24406
+INFO 11-02 01:47:15 [api_server.py:1818] Starting vLLM API server 0 on http://0.0.0.0:8000
+INFO 11-02 01:47:15 [launcher.py:29] Available routes are:
+INFO 11-02 01:47:15 [launcher.py:37] Route: /openapi.json, Methods: GET, HEAD
+INFO 11-02 01:47:15 [launcher.py:37] Route: /docs, Methods: GET, HEAD
+INFO 11-02 01:47:15 [launcher.py:37] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+INFO 11-02 01:47:15 [launcher.py:37] Route: /redoc, Methods: GET, HEAD
+INFO 11-02 01:47:15 [launcher.py:37] Route: /health, Methods: GET
+INFO 11-02 01:47:15 [launcher.py:37] Route: /load, Methods: GET
+INFO 11-02 01:47:15 [launcher.py:37] Route: /ping, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /ping, Methods: GET
+INFO 11-02 01:47:15 [launcher.py:37] Route: /tokenize, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /detokenize, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/models, Methods: GET
+INFO 11-02 01:47:15 [launcher.py:37] Route: /version, Methods: GET
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/responses, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/responses/{response_id}, Methods: GET
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/responses/{response_id}/cancel, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/chat/completions, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/completions, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/embeddings, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /pooling, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /classify, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /score, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/score, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/audio/transcriptions, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/audio/translations, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /rerank, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v1/rerank, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /v2/rerank, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /scale_elastic_ep, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /is_scaling_elastic_ep, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /invocations, Methods: POST
+INFO 11-02 01:47:15 [launcher.py:37] Route: /metrics, Methods: GET
+INFO:     Started server process [18569]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO 11-02 01:47:25 [logger.py:41] Received request cmpl-2a1192752c01433ca44f782ae5614105-0: prompt: 'Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts', params: SamplingParams(n=1, presence_penalty=0.0, frequency_penalty=0.0, repetition_penalty=1.0, temperature=0.7, top_p=1.0, top_k=0, min_p=0.0, seed=None, stop=[], stop_token_ids=[], bad_words=[], include_stop_str_in_output=False, ignore_eos=False, max_tokens=100, min_tokens=0, logprobs=None, prompt_logprobs=None, skip_special_tokens=True, spaces_between_special_tokens=True, truncate_prompt_tokens=None, guided_decoding=None, extra_args=None), prompt_token_ids: [2, 1864, 11760, 246, 16, 5, 665, 2706, 9, 739, 2777, 3092, 11, 1209, 11760, 651, 6, 1839, 10, 5145, 10606, 9, 19790, 8, 12652, 12, 1116, 12, 26786, 1872], prompt_embeds shape: None, lora_request: None.
+INFO 11-02 01:47:25 [async_llm.py:269] Added request cmpl-2a1192752c01433ca44f782ae5614105-0.
+[2025-11-02 01:47:25,104] LMCache INFO: Reqid: cmpl-2a1192752c01433ca44f782ae5614105-0, Total tokens 30, LMCache hit tokens: 0, need to load: 0 (vllm_v1_adapter.py:1324:lmcache.integration.vllm.vllm_v1_adapter)
+[2025-11-02 01:47:25,107] LMCache INFO: Post-initializing LMCacheEngine (cache_engine.py:173:lmcache.v1.cache_engine)
+[2025-11-02 01:48:18,805] LMCache INFO: Storing KV cache for 30 out of 30 tokens (skip_leading_tokens=0) for request cmpl-2a1192752c01433ca44f782ae5614105-0 (vllm_v1_adapter.py:1207:lmcache.integration.vllm.vllm_v1_adapter)
+[2025-11-02 01:48:18,807] LMCache INFO: Stored 30 out of total 30 tokens. size: 0.0010 gb, cost 1.4998 ms, throughput: 0.6868 GB/s; offload_time: 1.4603 ms, put_time: 0.0394 ms (cache_engine.py:297:lmcache.v1.cache_engine)
+INFO 11-02 01:48:25 [loggers.py:122] Engine 000: Avg prompt throughput: 3.0 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+INFO 11-02 01:48:35 [loggers.py:122] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+INFO:     127.0.0.1:37800 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO 11-02 01:49:55 [loggers.py:122] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 9.9 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+INFO 11-02 01:50:05 [loggers.py:122] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+^CINFO 11-02 01:52:41 [launcher.py:80] Shutting down FastAPI HTTP server.
+^CINFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ history
+    1  python
+    2  python3
+    3  sudo apt update && sudo apt upgrade
+    4  sudo apt update
+    5  ubuntu-drivers devices
+    6  sudo apt install nvidia-driver-525
+    7  sudo reboot
+    8  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pinsudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.debsudo dpkg -i cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.debsudo cp /var/cuda-repo-ubuntu2404-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/sudo apt-get updatesudo apt-get -y install cuda-toolkit-12-8
+    9  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+   10  sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+   11  wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.deb
+   12  sudo dpkg -i cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.deb
+   13  sudo cp /var/cuda-repo-ubuntu2404-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+   14  sudo apt-get update
+   15  sudo apt-get -y install cuda-toolkit-12-8
+   16  nvcc --version
+   17  nvidia-smi
+   18  echo 'export PATH=/usr/local/cuda-12.8/bin:$PATH' >> ~/.bashrc
+   19  echo 'export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+   20  source ~/.bashrc
+   21  nvcc --version
+   22  nvidia-smi
+   23  sudo apt-get remove --purge '^nvidia-.*'
+   24  sudo apt-get autoremove
+   25  sudo add-apt-repository ppa:graphics-drivers/ppa -y
+   26  sudo apt-get update
+   27  ubuntu-drivers devices
+   28  sudo apt install -y nvidia-driver-580-open
+   29  sudo reboot
+   30  nvidia-smi
+   31  nvcc --version
+   32  uv
+   33  curl -LsSf https://astral.sh/uv/install.sh | sh
+   34  sudo apt update
+   35  sudo apt install -y curl
+   36  curl -LsSf https://astral.sh/uv/install.sh | sh
+   37  export PATH="$HOME/.local/bin:$PATH"
+   38  source ~/.bashrc
+   39  uv --version
+   40  uv venv --python 3.12 venv
+   41  source venv/bin/activate
+   42  python
+   43  sudo apt install gnome-terminal
+   44  sudo apt-get update
+   45  sudo apt-get install ./docker-desktop-amd64.deb
+   46  systemctl --user start docker-desktop
+   47  systemctl --user enable docker-desktop
+   48  sudo apt-get install ./docker-desktop-amd64.deb
+   49  sudo apt-get update
+   50  sudo apt-get install ./docker-desktop-amd64.deb
+   51  sudo apt install gnome-terminal
+   52  # Add Docker's official GPG key:
+   53  sudo apt-get update
+   54  sudo apt-get install ca-certificates curl
+   55  sudo install -m 0755 -d /etc/apt/keyrings
+   56  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+   57  sudo chmod a+r /etc/apt/keyrings/docker.asc
+   58  # Add the repository to Apt sources:
+   59  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+   60    $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   61  sudo apt-get update
+   62  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   63  sudo systemctl status docker
+   64  sudo systemctl start docker
+   65  sudo docker run hello-world
+   66  sudo apt-get remove docker docker-engine docker.io containerd runc
+   67  sudo apt-get update
+   68  sudo apt-get install -y ca-certificates curl gnupg lsb-release
+   69  sudo install -m 0755 -d /etc/apt/keyrings
+   70  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   71  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   72  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+   73    https://download.docker.com/linux/ubuntu \
+   74    $(. /etc/os-release && echo $VERSION_CODENAME) stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   75  sudo apt-get update
+   76  sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   77  sudo systemctl enable docker
+   78  sudo systemctl start docker
+   79  sudo systemctl status docker
+   80  sudo usermod -aG docker $USER
+   81  newgrp docker
+   82  docker --version
+   83  sudo apt install ./docker-desktop-<version>-amd64.deb
+   84  dir
+   85  sudo apt install ./docker-desktop-amd64.deb
+   86  sudo apt update
+   87  sudo apt install -y pass
+   88  gpg --generate-key
+   89  pass init D21A0C99F8E63E7CD3C30D6106E7F2BF0E02F2B6
+   90  uv venv --python 3.12 venv && source venv/bin/activate
+   91  python
+   92  apt-get update
+   93  DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-dev python3-pip python3-venv libucx0
+   94  sudo apt-get update
+   95  sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-dev python3-pip python3-venv libucx0
+   96  python3 -m venv venv
+   97  source venv/bin/activate
+   98  python
+   99  pip install "ai-dynamo[all]"
+  100  pip
+  101  python -m ensurepip --upgrade
+  102  (venv) $ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  103  (venv) $ python get-pip.py
+  104  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  105  python get-pip.py
+  106  which pip
+  107  pip --version
+  108  pip install "ai-dynamo[all]"
+  109  dynamo-run
+  110  source venv/bin/activate
+  111  cd dynamo
+  112  cd target/release
+  113  dynamo-run Qwen/Qwen3-4B
+  114  ./dynamo-run Qwen/Qwen3-4B
+  115  find target -type f -executable | grep -E 'dynamo|run|cli'
+  116  cd ..
+  117  find target -type f -executable | grep -E 'dynamo|run|cli'
+  118  ~/dynamo_build/release/dynamo-run --help
+  119  ~/dynamo_build/release/dynamo serve --help
+  120  cargo build --release   --manifest-path /home/m/Desktop/1/dynamo/launch/dynamo-run/Cargo.toml   --features cuda
+  121  /home/m/Desktop/1/dynamo/target/release/dynamo-run
+  122  dynamo-run Qwen/Qwen3-0.6B
+  123  /home/m/Desktop/1/dynamo/target/release/dynamo-run Qwen/Qwen3-0.6B
+  124  huggingface-cli login
+  125  pip install --upgrade huggingface_hub[cli]
+  126  huggingface-cli login
+  127  source venv/bin/activate
+  128  dynamo
+  129  dynamo-run
+  130  sudo apt install -y build-essential libhwloc-dev libudev-dev pkg-config libssl-dev libclang-dev protobuf-compiler python3-dev cmake
+  131  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  132  source $HOME/.cargo/env
+  133  cargo
+  134  git clone https://github.com/NVIDIA/dynamo.git
+  135  cd dynamo
+  136  git clone https://github.com/ai-dynamo/dynamo.git
+  137  cd dynamo
+  138  cargo build --features cuda 
+  139  dynamo-run
+  140  cd target/debug
+  141  ./dynamo-run
+  142  cargo build --release --features cuda
+  143  ./target/release/dynamo-run
+  144  cd ..
+  145  ./release/dynamo-run
+  146  cd release
+  147  dynamo-run
+  148  ls target/release | grep dynamo
+  149  cd ..
+  150  ls target/release | grep dynamo
+  151  ./target/release/dynamo run --model facebook/opt-125m
+  152  cd target/release
+  153  dynamo-run
+  154  source venv/bin/activate
+  155  huggingface-cli login
+  156  hf auth login
+  157  cd dynamo
+  158  /home/m/Desktop/1/dynamo/target/release/dynamo-run Qwen/Qwen3-0.6B
+  159  /home/m/Desktop/1/dynamo/target/release/dynamo-run facebook/opt-125m
+  160  ls ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  161  cd ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  162  cp tokenizer_config.json tokenizer.json
+  163  cd /home/m/Desktop/1/dynamo
+  164  /home/m/Desktop/1/dynamo/target/release/dynamo-run facebook/opt-125m
+  165  ls ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  166  cp -r ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/* /home/m/Desktop/z/
+  167  chmod -R u+rw ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  168  mkdir -p /home/m/Desktop/z
+  169  cp -r ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/ /home/m/Desktop/z/
+  170  mkdir -p /home/m/Desktop/z
+  171  cp -r ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/ /home/m/Desktop/z/facebook-opt-125m/
+  172  hf download facebook/opt-125m --local-dir /home/m/Desktop/z/facebook-opt-125m
+  173  /home/m/Desktop/1/dynamo/target/release/dynamo-run /home/m/Desktop/z/facebook-opt-125m
+  174  /home/m/Desktop/1/dynamo/target/release/dynamo-run /home/m/Desktop/z/llama3.2
+  175  uv pip list
+  176  history
+  177  ./LM-Studio-0.3.30-2-x64.AppImage
+  178  chmod +x LM-Studio-0.3.30-2-x64.AppImage
+  179  ./LM-Studio-0.3.30-2-x64.AppImage
+  180  ./LM-Studio-0.3.30-2-x64.AppImage --no-sandbox
+  181  sudo apt update
+  182  sudo apt install libfuse2
+  183  ./LM-Studio-0.3.30-2-x64.AppImage
+  184  ./LM-Studio-0.3.30-2-x64.AppImage --appimage-extract
+  185  cd squashfs-root
+  186  AppRun
+  187  ./AppRun
+  188  history
+  189  llama-cli -h
+  190  ./llama-cli -h
+  191  ./llama-cli -h
+  192  ./llama-cli -m /home/m/Downloads/lmstudio/bartowski/Llama-3.2-3B-Instruct-GGUF/Llama-3.2-3B-Instruct-f16.gguf -ngl 11
+  193  sudo apt update
+  194  sudo apt install python3.12-venv python3.12-dev
+  195  python3.12 -m venv venv
+  196  source venv/bin/activate
+  197  pip3 install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  198  sudo apt-get -y install libopenmpi-dev
+  199  sudo apt-get -y install libzmq3-dev
+  200  pip3 install --upgrade pip setuptools && pip3 install tensorrt_llm
+  201  nvidia-smi
+  202  source venv/bin/activate
+  203  python
+  204  pip3 install tensorrt_llm
+  205  python 1.py
+  206  pip list
+  207  history
+  208  ollama
+  209  ollama run llama3.2:3b
+  210  ollama list
+  211  ./Transformer-Lab-0.23.1.AppImage
+  212  sudo apt install libfuse2
+  213  ./Transformer-Lab-0.23.1.AppImage
+  214  ./Transformer-Lab-0.23.1.AppImage --appimage-extract
+  215  cd squashfs-root
+  216  ./transformerlab
+  217  python3.12 -m venv venv && source venv/bin/activate
+  218  pip install flash-attn --no-build-isolation
+  219  pip install setuptools
+  220  pip install flash-attn --no-build-isolation
+  221  pip install flash-attn
+  222  pip install flash-attn==2.8.3
+  223  pip3 install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  224  pip install flash-attn --no-build-isolation
+  225  pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.7cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+  226  dir
+  227  pip install flash_attn-2.8.3+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+  228  python
+  229  pip install git+https://github.com/huggingface/transformers
+  230  python
+  231  dir
+  232  python ai_studio_code.py
+  233  pip list
+  234  history
+  235  chmod +x LM-Studio-0.3.30-2-x64.AppImage
+  236  ./LM-Studio-0.3.30-2-x64.AppImage
+  237  sudo apt install libfuse2
+  238  ./LM-Studio-0.3.30-2-x64.AppImage
+  239  ./LM-Studio-0.3.30-2-x64.AppImage --no-sandbox
+  240  ./LM-Studio-0.3.30-2-x64.AppImage --appimage-extract
+  241  python
+  242  python3
+  243  ollama
+  244  cargo
+  245  python3.12 -m venv venv && source venv/bin/activate
+  246  git clone https://github.com/LMCache/LMCache.git
+  247  cd LMCache
+  248  dir
+  249  git clone https://github.com/LMCache/LMCache.git
+  250  dir
+  251  cd LMCache
+  252  dir
+  253  pip install lmcache-0.3.9-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl 
+  254  cd examples/basic_check
+  255  cp example_config.yaml ~/.lmcache/config.yaml
+  256  python -m lmcache.v1.basic_check --mode test_remote
+  257  python -m lmcache.v1.basic_check --mode gen --num-keys 100 --concurrency 8
+  258  python -m lmcache.v1.basic_check --help
+  259  python -m lmcache.v1.basic_check --mode gen --num-keys 100 --concurrency 8 --offset 1000
+  260  vllm
+  261  cd ..
+  262  cd cache_interface
+  263  CUDA_VISIBLE_DEVICES=0 LMCACHE_USE_EXPERIMENTAL=True LMCACHE_CONFIG_FILE=example.yaml vllm serve facebook/opt-125m   --max-model-len 4096   --gpu-memory-utilization 0.8   --port 8000   --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  264  pip install vllm==0.10.0
+  265  CUDA_VISIBLE_DEVICES=0 LMCACHE_USE_EXPERIMENTAL=True LMCACHE_CONFIG_FILE=example.yaml vllm serve facebook/opt-125m   --max-model-len 4096   --gpu-memory-utilization 0.8   --port 8000   --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  266  CUDA_VISIBLE_DEVICES=0 LMCACHE_USE_EXPERIMENTAL=True LMCACHE_CONFIG_FILE=example.yaml vllm serve facebook/opt-125m   --max-model-len 100  --gpu-memory-utilization 0.8   --port 8000   --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  267  cd ..
+  268  python
+  269  uv venv --python 3.12
+  270  source .venv/bin/activate
+  271  uv pip install lmcache vllm
+  272  python
+  273  pip list
+  274  uv pip list
+  275  python3 -c "import vllm.distributed.kv_transfer.kv_connector.v1.lmcache_connector"
+  276  python
+  277  python test_lmcache.py
+  278  uv pip install -r requirements/build.txt
+  279  يهق
+  280  dir
+  281  git clone https://github.com/LMCache/LMCache.git
+  282  cd LMCache
+  283  git fetch --all --tags
+  284  pip3 install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  285  uv pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  286  git clone https://github.com/LMCache/LMCache.git
+  287  cd LMCache
+  288  uv venv --python 3.12   # أو أي نسخة مدعومة
+  289  source .venv/bin/activate
+  290  uv venv --python 3.12   # أو أي نسخة مدعومة
+  291  source .venv/bin/activate
+  292  git clone https://github.com/LMCache/LMCache.git
+  293  cd LMCache
+  294  uv venv --python 3.12   # أو أي نسخة مدعومة
+  295  source venv/bin/activate
+  296  source .venv/bin/activate
+  297  uv pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  298  uv pip install -r requirements/build.txt
+  299  uv pip install vllm==0.10.0
+  300  uv pip install -e . --no-build-isolation
+  301  python3 -c "import lmcache.c_ops"
+  302  python
+  303  LMCACHE_CHUNK_SIZE=8 vllm serve facebook/opt-125m     --port 8000 --kv-transfer-config     '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  304  LMCACHE_CHUNK_SIZE=8 vllm serve facebook/opt-125m     --port 8000 --kv-transfer-config     '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  305  history
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m@m-HP-Z440-Workstation:~/Desktop/3$ dir
+1.txt  LMCache
+m@m-HP-Z440-Workstation:~/Desktop/3$ cd LMCache
+m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ source .venv/bin/activate
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$  curl http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "facebook/opt-125m",
+    "prompt": "Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts",
+    "max_tokens": 100,
+    "temperature": 0.7
+  }'
+curl: (7) Failed to connect to localhost port 8000 after 0 ms: Couldn't connect to server
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$  curl http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "facebook/opt-125m",
+    "prompt": "Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts",
+    "max_tokens": 100,
+    "temperature": 0.7
+  }'
+
+{"id":"cmpl-2a1192752c01433ca44f782ae5614105","object":"text_completion","created":1762040845,"model":"facebook/opt-125m","choices":[{"index":0,"text":" language models.\n\nThe Qwen3 is a compact, lightweight language model with high performance and intuitive user interfaces. It uses a new generation of low-cost, high-performance language models that are simpler to use than previous generation models.\n\nQwen3 is a lightweight language model with high performance and intuitive user interfaces. It uses a new generation of low-cost, high-performance language models that are simpler to use than previous generation models.\n\nQwen 3 introduces a new","logprobs":null,"finish_reason":"length","stop_reason":null,"prompt_logprobs":null}],"service_tier":null,"system_fingerprint":null,"usage":{"prompt_tokens":30,"total_tokens":130,"completion_tokens":100,"prompt_tokens_details":null},"kv_transfer_params":null}(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv pip list
+Package                           Version       Editable project location
+--------------------------------- ------------- -------------------------
+aiofile                           3.9.0
+aiofiles                          25.1.0
+aiohappyeyeballs                  2.6.1
+aiohttp                           3.13.2
+aiosignal                         1.4.0
+annotated-doc                     0.0.3
+annotated-types                   0.7.0
+anyio                             4.11.0
+astor                             0.8.1
+attrs                             25.4.0
+awscrt                            0.28.3
+blake3                            1.0.8
+cachetools                        6.2.1
+caio                              0.9.24
+cbor2                             5.7.1
+certifi                           2025.10.5
+cffi                              2.0.0
+charset-normalizer                3.4.4
+click                             8.2.1
+cloudpickle                       3.1.1
+compressed-tensors                0.10.2
+cufile-python                     0.2.0
+cupy-cuda12x                      13.6.0
+depyf                             0.19.0
+dill                              0.4.0
+diskcache                         5.6.3
+distro                            1.9.0
+dnspython                         2.8.0
+einops                            0.8.1
+email-validator                   2.3.0
+fastapi                           0.120.4
+fastapi-cli                       0.0.14
+fastapi-cloud-cli                 0.3.1
+fastrlock                         0.8.3
+filelock                          3.19.1
+frozenlist                        1.8.0
+fsspec                            2025.9.0
+gguf                              0.17.1
+h11                               0.16.0
+hf-xet                            1.2.0
+httpcore                          1.0.9
+httptools                         0.7.1
+httpx                             0.28.1
+huggingface-hub                   0.36.0
+idna                              3.11
+interegular                       0.3.3
+jinja2                            3.1.6
+jiter                             0.11.1
+jsonschema                        4.25.1
+jsonschema-specifications         2025.9.1
+lark                              1.2.2
+llguidance                        0.7.30
+llvmlite                          0.44.0
+lm-format-enforcer                0.10.12
+lmcache                           0.3.10.dev12  /home/m/Desktop/3/LMCache
+markdown-it-py                    4.0.0
+markupsafe                        2.1.5
+mdurl                             0.1.2
+mistral-common                    1.8.5
+mpmath                            1.3.0
+msgpack                           1.1.2
+msgspec                           0.19.0
+multidict                         6.7.0
+networkx                          3.5
+ninja                             1.13.0
+nixl                              0.7.0
+numba                             0.61.2
+numpy                             2.2.0
+nvidia-cublas-cu12                12.8.3.14
+nvidia-cuda-cupti-cu12            12.8.57
+nvidia-cuda-nvrtc-cu12            12.8.61
+nvidia-cuda-runtime-cu12          12.8.57
+nvidia-cudnn-cu12                 9.7.1.26
+nvidia-cufft-cu12                 11.3.3.41
+nvidia-cufile-cu12                1.13.0.11
+nvidia-curand-cu12                10.3.9.55
+nvidia-cusolver-cu12              11.7.2.55
+nvidia-cusparse-cu12              12.5.7.53
+nvidia-cusparselt-cu12            0.6.3
+nvidia-nccl-cu12                  2.26.2
+nvidia-nvjitlink-cu12             12.8.61
+nvidia-nvtx-cu12                  12.8.55
+nvtx                              0.2.13
+openai                            1.90.0
+opencv-python-headless            4.12.0.88
+outlines-core                     0.2.10
+packaging                         25.0
+partial-json-parser               0.2.1.1.post6
+pillow                            11.3.0
+prometheus-client                 0.23.1
+prometheus-fastapi-instrumentator 7.1.0
+propcache                         0.4.1
+protobuf                          6.33.0
+psutil                            7.1.2
+py-cpuinfo                        9.0.0
+pybase64                          1.4.2
+pycountry                         24.6.1
+pycparser                         2.23
+pydantic                          2.12.3
+pydantic-core                     2.41.4
+pydantic-extra-types              2.10.6
+pygments                          2.19.2
+python-dotenv                     1.2.1
+python-json-logger                4.0.0
+python-multipart                  0.0.20
+pyyaml                            6.0.3
+pyzmq                             27.1.0
+ray                               2.51.1
+redis                             7.0.1
+referencing                       0.37.0
+regex                             2025.10.23
+requests                          2.32.5
+rich                              14.2.0
+rich-toolkit                      0.15.1
+rignore                           0.7.3
+rpds-py                           0.28.0
+safetensors                       0.6.2
+scipy                             1.16.3
+sentencepiece                     0.2.1
+sentry-sdk                        2.43.0
+setuptools                        79.0.1
+setuptools-scm                    9.2.2
+shellingham                       1.5.4
+six                               1.17.0
+sniffio                           1.3.1
+sortedcontainers                  2.4.0
+soundfile                         0.13.1
+soxr                              1.0.0
+starlette                         0.49.3
+sympy                             1.14.0
+tiktoken                          0.12.0
+tokenizers                        0.22.1
+torch                             2.7.1+cu128
+torchaudio                        2.7.1+cu128
+torchvision                       0.22.1+cu128
+tqdm                              4.67.1
+transformers                      4.57.1
+triton                            3.3.1
+typer                             0.20.0
+typing-extensions                 4.15.0
+typing-inspection                 0.4.2
+urllib3                           2.5.0
+uvicorn                           0.38.0
+uvloop                            0.22.1
+vllm                              0.10.0
+watchfiles                        1.1.1
+websockets                        15.0.1
+wheel                             0.45.1
+xformers                          0.0.31
+xgrammar                          0.1.21
+yarl                              1.22.0
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ history
+    1  python
+    2  python3
+    3  sudo apt update && sudo apt upgrade
+    4  sudo apt update
+    5  ubuntu-drivers devices
+    6  sudo apt install nvidia-driver-525
+    7  sudo reboot
+    8  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pinsudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.debsudo dpkg -i cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.debsudo cp /var/cuda-repo-ubuntu2404-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/sudo apt-get updatesudo apt-get -y install cuda-toolkit-12-8
+    9  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+   10  sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+   11  wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.deb
+   12  sudo dpkg -i cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.deb
+   13  sudo cp /var/cuda-repo-ubuntu2404-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+   14  sudo apt-get update
+   15  sudo apt-get -y install cuda-toolkit-12-8
+   16  nvcc --version
+   17  nvidia-smi
+   18  echo 'export PATH=/usr/local/cuda-12.8/bin:$PATH' >> ~/.bashrc
+   19  echo 'export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+   20  source ~/.bashrc
+   21  nvcc --version
+   22  nvidia-smi
+   23  sudo apt-get remove --purge '^nvidia-.*'
+   24  sudo apt-get autoremove
+   25  sudo add-apt-repository ppa:graphics-drivers/ppa -y
+   26  sudo apt-get update
+   27  ubuntu-drivers devices
+   28  sudo apt install -y nvidia-driver-580-open
+   29  sudo reboot
+   30  nvidia-smi
+   31  nvcc --version
+   32  uv
+   33  curl -LsSf https://astral.sh/uv/install.sh | sh
+   34  sudo apt update
+   35  sudo apt install -y curl
+   36  curl -LsSf https://astral.sh/uv/install.sh | sh
+   37  export PATH="$HOME/.local/bin:$PATH"
+   38  source ~/.bashrc
+   39  uv --version
+   40  uv venv --python 3.12 venv
+   41  source venv/bin/activate
+   42  python
+   43  sudo apt install gnome-terminal
+   44  sudo apt-get update
+   45  sudo apt-get install ./docker-desktop-amd64.deb
+   46  systemctl --user start docker-desktop
+   47  systemctl --user enable docker-desktop
+   48  sudo apt-get install ./docker-desktop-amd64.deb
+   49  sudo apt-get update
+   50  sudo apt-get install ./docker-desktop-amd64.deb
+   51  sudo apt install gnome-terminal
+   52  # Add Docker's official GPG key:
+   53  sudo apt-get update
+   54  sudo apt-get install ca-certificates curl
+   55  sudo install -m 0755 -d /etc/apt/keyrings
+   56  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+   57  sudo chmod a+r /etc/apt/keyrings/docker.asc
+   58  # Add the repository to Apt sources:
+   59  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+   60    $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   61  sudo apt-get update
+   62  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   63  sudo systemctl status docker
+   64  sudo systemctl start docker
+   65  sudo docker run hello-world
+   66  sudo apt-get remove docker docker-engine docker.io containerd runc
+   67  sudo apt-get update
+   68  sudo apt-get install -y ca-certificates curl gnupg lsb-release
+   69  sudo install -m 0755 -d /etc/apt/keyrings
+   70  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   71  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   72  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+   73    https://download.docker.com/linux/ubuntu \
+   74    $(. /etc/os-release && echo $VERSION_CODENAME) stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   75  sudo apt-get update
+   76  sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   77  sudo systemctl enable docker
+   78  sudo systemctl start docker
+   79  sudo systemctl status docker
+   80  sudo usermod -aG docker $USER
+   81  newgrp docker
+   82  docker --version
+   83  sudo apt install ./docker-desktop-<version>-amd64.deb
+   84  dir
+   85  sudo apt install ./docker-desktop-amd64.deb
+   86  sudo apt update
+   87  sudo apt install -y pass
+   88  gpg --generate-key
+   89  pass init D21A0C99F8E63E7CD3C30D6106E7F2BF0E02F2B6
+   90  uv venv --python 3.12 venv && source venv/bin/activate
+   91  python
+   92  apt-get update
+   93  DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-dev python3-pip python3-venv libucx0
+   94  sudo apt-get update
+   95  sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-dev python3-pip python3-venv libucx0
+   96  python3 -m venv venv
+   97  source venv/bin/activate
+   98  python
+   99  pip install "ai-dynamo[all]"
+  100  pip
+  101  python -m ensurepip --upgrade
+  102  (venv) $ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  103  (venv) $ python get-pip.py
+  104  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  105  python get-pip.py
+  106  which pip
+  107  pip --version
+  108  pip install "ai-dynamo[all]"
+  109  dynamo-run
+  110  source venv/bin/activate
+  111  cd dynamo
+  112  cd target/release
+  113  dynamo-run Qwen/Qwen3-4B
+  114  ./dynamo-run Qwen/Qwen3-4B
+  115  find target -type f -executable | grep -E 'dynamo|run|cli'
+  116  cd ..
+  117  find target -type f -executable | grep -E 'dynamo|run|cli'
+  118  ~/dynamo_build/release/dynamo-run --help
+  119  ~/dynamo_build/release/dynamo serve --help
+  120  cargo build --release   --manifest-path /home/m/Desktop/1/dynamo/launch/dynamo-run/Cargo.toml   --features cuda
+  121  /home/m/Desktop/1/dynamo/target/release/dynamo-run
+  122  dynamo-run Qwen/Qwen3-0.6B
+  123  /home/m/Desktop/1/dynamo/target/release/dynamo-run Qwen/Qwen3-0.6B
+  124  huggingface-cli login
+  125  pip install --upgrade huggingface_hub[cli]
+  126  huggingface-cli login
+  127  source venv/bin/activate
+  128  dynamo
+  129  dynamo-run
+  130  sudo apt install -y build-essential libhwloc-dev libudev-dev pkg-config libssl-dev libclang-dev protobuf-compiler python3-dev cmake
+  131  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  132  source $HOME/.cargo/env
+  133  cargo
+  134  git clone https://github.com/NVIDIA/dynamo.git
+  135  cd dynamo
+  136  git clone https://github.com/ai-dynamo/dynamo.git
+  137  cd dynamo
+  138  cargo build --features cuda 
+  139  dynamo-run
+  140  cd target/debug
+  141  ./dynamo-run
+  142  cargo build --release --features cuda
+  143  ./target/release/dynamo-run
+  144  cd ..
+  145  ./release/dynamo-run
+  146  cd release
+  147  dynamo-run
+  148  ls target/release | grep dynamo
+  149  cd ..
+  150  ls target/release | grep dynamo
+  151  ./target/release/dynamo run --model facebook/opt-125m
+  152  cd target/release
+  153  dynamo-run
+  154  source venv/bin/activate
+  155  huggingface-cli login
+  156  hf auth login
+  157  cd dynamo
+  158  /home/m/Desktop/1/dynamo/target/release/dynamo-run Qwen/Qwen3-0.6B
+  159  /home/m/Desktop/1/dynamo/target/release/dynamo-run facebook/opt-125m
+  160  ls ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  161  cd ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  162  cp tokenizer_config.json tokenizer.json
+  163  cd /home/m/Desktop/1/dynamo
+  164  /home/m/Desktop/1/dynamo/target/release/dynamo-run facebook/opt-125m
+  165  ls ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  166  cp -r ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/* /home/m/Desktop/z/
+  167  chmod -R u+rw ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/
+  168  mkdir -p /home/m/Desktop/z
+  169  cp -r ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/ /home/m/Desktop/z/
+  170  mkdir -p /home/m/Desktop/z
+  171  cp -r ~/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6/ /home/m/Desktop/z/facebook-opt-125m/
+  172  hf download facebook/opt-125m --local-dir /home/m/Desktop/z/facebook-opt-125m
+  173  /home/m/Desktop/1/dynamo/target/release/dynamo-run /home/m/Desktop/z/facebook-opt-125m
+  174  /home/m/Desktop/1/dynamo/target/release/dynamo-run /home/m/Desktop/z/llama3.2
+  175  uv pip list
+  176  history
+  177  ./LM-Studio-0.3.30-2-x64.AppImage
+  178  chmod +x LM-Studio-0.3.30-2-x64.AppImage
+  179  ./LM-Studio-0.3.30-2-x64.AppImage
+  180  ./LM-Studio-0.3.30-2-x64.AppImage --no-sandbox
+  181  sudo apt update
+  182  sudo apt install libfuse2
+  183  ./LM-Studio-0.3.30-2-x64.AppImage
+  184  ./LM-Studio-0.3.30-2-x64.AppImage --appimage-extract
+  185  cd squashfs-root
+  186  AppRun
+  187  ./AppRun
+  188  history
+  189  llama-cli -h
+  190  ./llama-cli -h
+  191  ./llama-cli -h
+  192  ./llama-cli -m /home/m/Downloads/lmstudio/bartowski/Llama-3.2-3B-Instruct-GGUF/Llama-3.2-3B-Instruct-f16.gguf -ngl 11
+  193  sudo apt update
+  194  sudo apt install python3.12-venv python3.12-dev
+  195  python3.12 -m venv venv
+  196  source venv/bin/activate
+  197  pip3 install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  198  sudo apt-get -y install libopenmpi-dev
+  199  sudo apt-get -y install libzmq3-dev
+  200  pip3 install --upgrade pip setuptools && pip3 install tensorrt_llm
+  201  nvidia-smi
+  202  source venv/bin/activate
+  203  python
+  204  pip3 install tensorrt_llm
+  205  python 1.py
+  206  pip list
+  207  history
+  208  ollama
+  209  ollama run llama3.2:3b
+  210  ollama list
+  211  ./Transformer-Lab-0.23.1.AppImage
+  212  sudo apt install libfuse2
+  213  ./Transformer-Lab-0.23.1.AppImage
+  214  ./Transformer-Lab-0.23.1.AppImage --appimage-extract
+  215  cd squashfs-root
+  216  ./transformerlab
+  217  python3.12 -m venv venv && source venv/bin/activate
+  218  pip install flash-attn --no-build-isolation
+  219  pip install setuptools
+  220  pip install flash-attn --no-build-isolation
+  221  pip install flash-attn
+  222  pip install flash-attn==2.8.3
+  223  pip3 install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  224  pip install flash-attn --no-build-isolation
+  225  pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.7cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+  226  dir
+  227  pip install flash_attn-2.8.3+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+  228  python
+  229  pip install git+https://github.com/huggingface/transformers
+  230  python
+  231  dir
+  232  python ai_studio_code.py
+  233  pip list
+  234  history
+  235  chmod +x LM-Studio-0.3.30-2-x64.AppImage
+  236  ./LM-Studio-0.3.30-2-x64.AppImage
+  237  sudo apt install libfuse2
+  238  ./LM-Studio-0.3.30-2-x64.AppImage
+  239  ./LM-Studio-0.3.30-2-x64.AppImage --no-sandbox
+  240  ./LM-Studio-0.3.30-2-x64.AppImage --appimage-extract
+  241  python
+  242  python3
+  243  ollama
+  244  cargo
+  245  python3.12 -m venv venv && source venv/bin/activate
+  246  git clone https://github.com/LMCache/LMCache.git
+  247  cd LMCache
+  248  dir
+  249  git clone https://github.com/LMCache/LMCache.git
+  250  dir
+  251  cd LMCache
+  252  dir
+  253  pip install lmcache-0.3.9-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl 
+  254  cd examples/basic_check
+  255  cp example_config.yaml ~/.lmcache/config.yaml
+  256  python -m lmcache.v1.basic_check --mode test_remote
+  257  python -m lmcache.v1.basic_check --mode gen --num-keys 100 --concurrency 8
+  258  python -m lmcache.v1.basic_check --help
+  259  python -m lmcache.v1.basic_check --mode gen --num-keys 100 --concurrency 8 --offset 1000
+  260  vllm
+  261  cd ..
+  262  cd cache_interface
+  263  CUDA_VISIBLE_DEVICES=0 LMCACHE_USE_EXPERIMENTAL=True LMCACHE_CONFIG_FILE=example.yaml vllm serve facebook/opt-125m   --max-model-len 4096   --gpu-memory-utilization 0.8   --port 8000   --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  264  pip install vllm==0.10.0
+  265  CUDA_VISIBLE_DEVICES=0 LMCACHE_USE_EXPERIMENTAL=True LMCACHE_CONFIG_FILE=example.yaml vllm serve facebook/opt-125m   --max-model-len 4096   --gpu-memory-utilization 0.8   --port 8000   --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  266  CUDA_VISIBLE_DEVICES=0 LMCACHE_USE_EXPERIMENTAL=True LMCACHE_CONFIG_FILE=example.yaml vllm serve facebook/opt-125m   --max-model-len 100  --gpu-memory-utilization 0.8   --port 8000   --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  267  cd ..
+  268  python
+  269  uv venv --python 3.12
+  270  source .venv/bin/activate
+  271  uv pip install lmcache vllm
+  272  python
+  273  pip list
+  274  uv pip list
+  275  python3 -c "import vllm.distributed.kv_transfer.kv_connector.v1.lmcache_connector"
+  276  python
+  277  python test_lmcache.py
+  278  uv pip install -r requirements/build.txt
+  279  يهق
+  280  dir
+  281  git clone https://github.com/LMCache/LMCache.git
+  282  cd LMCache
+  283  git fetch --all --tags
+  284  pip3 install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  285  uv pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  286  git clone https://github.com/LMCache/LMCache.git
+  287  cd LMCache
+  288  uv venv --python 3.12   # أو أي نسخة مدعومة
+  289  source .venv/bin/activate
+  290  uv venv --python 3.12   # أو أي نسخة مدعومة
+  291  source .venv/bin/activate
+  292  dir
+  293  cd LMCache
+  294  source .venv/bin/activate
+  295  uv pip list
+  296  history
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+
+
+
+
+
+
+
+
+

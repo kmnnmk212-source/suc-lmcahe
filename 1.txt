@@ -1,0 +1,412 @@
+الحمد لله
+اشتغل
+
+rtx5060ti16gb
+python3.12
+cuda tookit 12.8
+
+
+
+
+git clone https://github.com/LMCache/LMCache.git
+cd LMCache
+
+
+uv venv --python 3.12   # أو أي نسخة مدعومة
+source .venv/bin/activate
+
+
+
+
+uv pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+
+uv pip install -r requirements/build.txt
+uv pip install vllm==0.10.0
+
+uv pip install -e . --no-build-isolation
+
+
+
+
+
+
+
+
+https://docs.lmcache.ai/getting_started/installation.html
+git clone https://github.com/LMCache/LMCache.git
+cd LMCache
+
+uv venv --python 3.12
+source .venv/bin/activate
+
+# Need to install these packages manually to avoid build isolation
+uv pip install -r requirements/build.txt
+
+# Option 1.
+# select the torch version that matches the dependency of your serving engine
+# 2.7.1 is an example for vllm 0.10.0
+uv pip install torch==2.7.1
+
+# Option 2.
+# install your serving engine with its required torch version bundled
+# example: vllm 0.10.0 will install torch 2.7.1
+uv pip install vllm==0.10.0
+
+# no build isolation requires torch to already be installed
+# with your desired version
+uv pip install -e . --no-build-isolation
+
+You can quickly test whether you have undefined symbol references by running:
+
+python3 -c "import lmcache.c_ops"
+
+
+
+
+
+
+from vllm import LLM, SamplingParams
+from vllm.config import KVTransferConfig
+
+# Configure KV cache transfer to use LMCache
+ktc = KVTransferConfig(
+    kv_connector="LMCacheConnectorV1",
+    kv_role="kv_both",
+)
+
+# Initialize LLM with LMCache configuration
+# Adjust gpu_memory_utilization based on your GPU memory
+llm = LLM(model="facebook/opt-125m",
+          kv_transfer_config=ktc,
+          max_model_len=256,
+          gpu_memory_utilization=0.8)
+# Create example prompts with shared prefix
+shared_prompt = "Hello, how are you?" * 100
+prompts = [
+    shared_prompt + "Hello, my name is",
+]
+
+# Define sampling parameters
+sampling_params = SamplingParams(temperature=0, top_p=0.95, max_tokens=10)
+
+# Run inference
+outputs = llm.generate(prompts, sampling_params)
+for output in outputs:
+    generated_text = output.outputs[0].text
+    print(f"Generated text: {generated_text!r}")
+
+
+
+
+
+شغال
+########################################################https://docs.lmcache.ai/getting_started/quickstart.html
+LMCACHE_CHUNK_SIZE=8 \
+vllm serve facebook/opt-125m \
+    --port 8000 --kv-transfer-config \
+    '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+    
+    
+    
+    
+    
+ curl http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "facebook/opt-125m",
+    "prompt": "Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts",
+    "max_tokens": 100,
+    "temperature": 0.7
+  }'
+
+#############################################################
+
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$  curl http://localhost:8000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "facebook/opt-125m",
+    "prompt": "Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts",
+    "max_tokens": 100,
+    "temperature": 0.7
+  }'
+
+{"id":"cmpl-2a1192752c01433ca44f782ae5614105","object":"text_completion","created":1762040845,"model":"facebook/opt-125m","choices":[{"index":0,"text":" language models.\n\nThe Qwen3 is a compact, lightweight language model with high performance and intuitive user interfaces. It uses a new generation of low-cost, high-performance language models that are simpler to use than previous generation models.\n\nQwen3 is a lightweight language model with high performance and intuitive user interfaces. It uses a new generation of low-cost, high-performance language models that are simpler to use than previous generation models.\n\nQwen 3 introduces a new","logprobs":null,"finish_reason":"length","stop_reason":null,"prompt_logprobs":null}],"service_tier":null,"system_fingerprint":null,"usage":{"prompt_tokens":30,"total_tokens":130,"completion_tokens":100,"prompt_tokens_details":null},"kv_transfer_params":null}(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+
+33#################################################################
+
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ uv pip list
+Package                           Version       Editable project location
+--------------------------------- ------------- -------------------------
+aiofile                           3.9.0
+aiofiles                          25.1.0
+aiohappyeyeballs                  2.6.1
+aiohttp                           3.13.2
+aiosignal                         1.4.0
+annotated-doc                     0.0.3
+annotated-types                   0.7.0
+anyio                             4.11.0
+astor                             0.8.1
+attrs                             25.4.0
+awscrt                            0.28.3
+blake3                            1.0.8
+cachetools                        6.2.1
+caio                              0.9.24
+cbor2                             5.7.1
+certifi                           2025.10.5
+cffi                              2.0.0
+charset-normalizer                3.4.4
+click                             8.2.1
+cloudpickle                       3.1.1
+compressed-tensors                0.10.2
+cufile-python                     0.2.0
+cupy-cuda12x                      13.6.0
+depyf                             0.19.0
+dill                              0.4.0
+diskcache                         5.6.3
+distro                            1.9.0
+dnspython                         2.8.0
+einops                            0.8.1
+email-validator                   2.3.0
+fastapi                           0.120.4
+fastapi-cli                       0.0.14
+fastapi-cloud-cli                 0.3.1
+fastrlock                         0.8.3
+filelock                          3.19.1
+frozenlist                        1.8.0
+fsspec                            2025.9.0
+gguf                              0.17.1
+h11                               0.16.0
+hf-xet                            1.2.0
+httpcore                          1.0.9
+httptools                         0.7.1
+httpx                             0.28.1
+huggingface-hub                   0.36.0
+idna                              3.11
+interegular                       0.3.3
+jinja2                            3.1.6
+jiter                             0.11.1
+jsonschema                        4.25.1
+jsonschema-specifications         2025.9.1
+lark                              1.2.2
+llguidance                        0.7.30
+llvmlite                          0.44.0
+lm-format-enforcer                0.10.12
+lmcache                           0.3.10.dev12  /home/m/Desktop/3/LMCache
+markdown-it-py                    4.0.0
+markupsafe                        2.1.5
+mdurl                             0.1.2
+mistral-common                    1.8.5
+mpmath                            1.3.0
+msgpack                           1.1.2
+msgspec                           0.19.0
+multidict                         6.7.0
+networkx                          3.5
+ninja                             1.13.0
+nixl                              0.7.0
+numba                             0.61.2
+numpy                             2.2.0
+nvidia-cublas-cu12                12.8.3.14
+nvidia-cuda-cupti-cu12            12.8.57
+nvidia-cuda-nvrtc-cu12            12.8.61
+nvidia-cuda-runtime-cu12          12.8.57
+nvidia-cudnn-cu12                 9.7.1.26
+nvidia-cufft-cu12                 11.3.3.41
+nvidia-cufile-cu12                1.13.0.11
+nvidia-curand-cu12                10.3.9.55
+nvidia-cusolver-cu12              11.7.2.55
+nvidia-cusparse-cu12              12.5.7.53
+nvidia-cusparselt-cu12            0.6.3
+nvidia-nccl-cu12                  2.26.2
+nvidia-nvjitlink-cu12             12.8.61
+nvidia-nvtx-cu12                  12.8.55
+nvtx                              0.2.13
+openai                            1.90.0
+opencv-python-headless            4.12.0.88
+outlines-core                     0.2.10
+packaging                         25.0
+partial-json-parser               0.2.1.1.post6
+pillow                            11.3.0
+prometheus-client                 0.23.1
+prometheus-fastapi-instrumentator 7.1.0
+propcache                         0.4.1
+protobuf                          6.33.0
+psutil                            7.1.2
+py-cpuinfo                        9.0.0
+pybase64                          1.4.2
+pycountry                         24.6.1
+pycparser                         2.23
+pydantic                          2.12.3
+pydantic-core                     2.41.4
+pydantic-extra-types              2.10.6
+pygments                          2.19.2
+python-dotenv                     1.2.1
+python-json-logger                4.0.0
+python-multipart                  0.0.20
+pyyaml                            6.0.3
+pyzmq                             27.1.0
+ray                               2.51.1
+redis                             7.0.1
+referencing                       0.37.0
+regex                             2025.10.23
+requests                          2.32.5
+rich                              14.2.0
+rich-toolkit                      0.15.1
+rignore                           0.7.3
+rpds-py                           0.28.0
+safetensors                       0.6.2
+scipy                             1.16.3
+sentencepiece                     0.2.1
+sentry-sdk                        2.43.0
+setuptools                        79.0.1
+setuptools-scm                    9.2.2
+shellingham                       1.5.4
+six                               1.17.0
+sniffio                           1.3.1
+sortedcontainers                  2.4.0
+soundfile                         0.13.1
+soxr                              1.0.0
+starlette                         0.49.3
+sympy                             1.14.0
+tiktoken                          0.12.0
+tokenizers                        0.22.1
+torch                             2.7.1+cu128
+torchaudio                        2.7.1+cu128
+torchvision                       0.22.1+cu128
+tqdm                              4.67.1
+transformers                      4.57.1
+triton                            3.3.1
+typer                             0.20.0
+typing-extensions                 4.15.0
+typing-inspection                 0.4.2
+urllib3                           2.5.0
+uvicorn                           0.38.0
+uvloop                            0.22.1
+vllm                              0.10.0
+watchfiles                        1.1.1
+websockets                        15.0.1
+wheel                             0.45.1
+xformers                          0.0.31
+xgrammar                          0.1.21
+yarl                              1.22.0
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+
+
+
+
+
+
+  292  git clone https://github.com/LMCache/LMCache.git
+  293  cd LMCache
+  294  uv venv --python 3.12   # أو أي نسخة مدعومة
+  295  source venv/bin/activate
+  296  source .venv/bin/activate
+  297  uv pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+  298  uv pip install -r requirements/build.txt
+  299  uv pip install vllm==0.10.0
+  300  uv pip install -e . --no-build-isolation
+  301  python3 -c "import lmcache.c_ops"
+  302  python
+  303  LMCACHE_CHUNK_SIZE=8 vllm serve facebook/opt-125m     --port 8000 --kv-transfer-config     '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  304  LMCACHE_CHUNK_SIZE=8 vllm serve facebook/opt-125m     --port 8000 --kv-transfer-config     '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  305  history
+(LMCache) m@m-HP-Z440-Workstation:~/Desktop/3/LMCache$ 
+
+
+
+
+
+
+
+⚠️ ملاحظات وتحسينات ممكنة
+
+على الرغم من أن الأمر يعمل، إليك بعض النصائح والتحسينات:
+
+اختيار قيمة LMCACHE_CHUNK_SIZE المناسبة
+أنت استخدمت LMCACHE_CHUNK_SIZE=8، وهي صغيرة جدًا. غالبًا تُستخدم قيم مثل 256 أو 512 لتقسيم الكاش إلى وحدات يمكن إدارتها.
+استخدام قيمة صغيرة جدًا قد يؤدي إلى overhead زائد في نقل الكاش. جرب قيم مثل 128 أو 256 لرؤية الأداء.
+
+تفعيل التهيئة الصحيحة للبيئة
+تأكد من أن متغيرات البيئة مثل LMCACHE_LOCAL_CPU, LMCACHE_MAX_LOCAL_CPU_SIZE مضبوطة إذا كنت تُريد offloading إلى CPU عند الحاجة.
+
+متابعة التوافق بين النسخ
+بما أنك تستخدم vLLM 0.10.0 و LMCache من المصدر، لاحظ أن إذا قمت بترقية vLLM إلى إصدار أحدث (مثلاً 0.11) قد تحتاج إعادة بناء LMCache ليتوافق مع الكيرنالات والربط الجديد.
+
+اختبار ضربات الضغط (stress tests)
+جرب إرسال استفسارات كثيرة، طويلة، متعددة الأغراض لرؤية إذا يظهر خطأ أو فشل في الكاش أو توقف.
+
+مقارنة الأداء قبل/بعد الكاش
+ارسل نفس الـ prompt مرتين — الأولى بدون الكاش، الثانية يجب أن تكون أسرع لأن الكاش يُستدعى. هذا مؤشر جيد أن الكاش فعّال.
+
+
+نعم، الأوامر التي استخدمتها تشير إلى تشغيل **vLLM مع LMCache**، وبما أنك تلقيت ردًّا صحيحًا من الخادم `curl`، فهذا يعني أن الربط مع LMCache فعّال في هذا السيناريو.
+
+إليك ما يعنيه ذلك وماذا تتأكد منه:
+
+---
+
+## ✔ ما تؤكّده الأوامر
+
+* أمر:
+
+  ```bash
+  LMCACHE_CHUNK_SIZE=8 \
+  vllm serve facebook/opt-125m \
+      --port 8000 --kv-transfer-config \
+      '{"kv_connector":"LMCacheConnectorV1", "kv_role":"kv_both"}'
+  ```
+
+  هذا يُشير إلى أنك طلبت من vLLM أن يستخدم **موصل LMCache** (LMCacheConnectorV1) في كل من **الكتابة** و **القراءة** (kv_role = "kv_both") من/إلى الكاش.
+
+* استدعاء:
+
+  ```bash
+  curl http://localhost:8000/v1/completions ...
+  ```
+
+  وأنت تلقيت استجابة مفهومة من الخادم، مما يعني أن الخادم شغّال، وأن vLLM يعمل، وإعداد الربط لم يمنع الخدمة من العمل.
+
+---
+
+## ⚠️ ما لا يضمنه هذا فقط
+
+لكن، أن الخدمة تعمل لا يضمن أن **كل وظائف LMCache** تعمل بالكامل أو بشكل مثالي. فمثلاً:
+
+* قد تكون عمليات كتابة الكاش إلى GPU أو قراءتها من الكاش تفتقر إلى الأداء أو تواجه أخطاء خفية في بعض الحالات.
+* ربما في بعض الطلبات الطويلة أو في حالات معينة، تظهر الأخطاء التي واجهتها سابقًا (مثل خطأ “CUDA no kernel image”) عند محاولة حفظ الكاش العميق.
+* قد يكون الكاش لا يُستخدم فعليًا في بعض الطلبات لظروف معينة (مثلاً إذا prompt مما لا يمكن كاشه أو تجاوز حدود الكاش).
+
+---
+
+## 📚 ما تراه الوثائق كمثال مماثل
+
+الوثائق تضمن مثالًا مُشابهًا في الفرق:
+
+> “This example demonstrates how to use CPU memory offloading … Launch the vLLM server with LMCache integration using environment variables. Here’s an example command:
+> `vllm serve Qwen/Qwen3-8B --kv-transfer-config '{"kv_connector":"LMCacheConnectorV1","kv_role":"kv_both"}'`” ([docs.lmcache.ai][1])
+
+أي أن هذه الصيغة من أوامر `vllm serve` مع `--kv-transfer-config` يتم استخدامها كمثال في الوثائق لدمج LMCache وخدمة LLM مع الكاش ([docs.lmcache.ai][1]).
+
+---
+
+## ✅ الخلاصة
+
+* **نعم، الأوامر التي استخدمتها تُفعّل LMCache** (على الأقل في وضع الربط مع vLLM) — لأنك طلبت الربط، والخادم استجاب.
+* لكن لا يمكن الجزم بأن كل ميزات الكاش تعمل بدون مشاكل في جميع الحالات— تحتاج اختبارات أعمق (طلبات متكررة، حالات حدود، قراءة/كتابة الكاش) للتأكد من أن الكاش يُستخدم ويُخزَّن كما تريد.
+
+إذا تحب، أرسل لي **سجل اللوج (logs)** أثناء تشغيل الخدمة وعملية الكاش (أثناء الطلبات المتعددة)، أساعدك أتأكد أن الكاش يُستخدم عمليًا، وأكتشف إذا هناك أجزاء لا تعمل. هل ترغب أن أشرح لك كيف تفعيل لوج مفصّل أو تجهيز الأوامر لعرض لوج الكاش؟
+
+[1]: https://docs.lmcache.ai/getting_started/quickstart/offload_kv_cache.html?utm_source=chatgpt.com "Example: Offload KV cache to CPU - LMCache!"
+
+
+
+
+
+
+
+
+
+
+
+
